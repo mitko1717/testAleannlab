@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.js": "/testAleannlab/static/js/main.580cfeff.chunk.js",
+    "main.js.map": "/testAleannlab/static/js/main.580cfeff.chunk.js.map",
+    "runtime-main.js": "/testAleannlab/static/js/runtime-main.3e29007d.js",
+    "runtime-main.js.map": "/testAleannlab/static/js/runtime-main.3e29007d.js.map",
+    "static/js/2.044dfd5e.chunk.js": "/testAleannlab/static/js/2.044dfd5e.chunk.js",
+    "static/js/2.044dfd5e.chunk.js.map": "/testAleannlab/static/js/2.044dfd5e.chunk.js.map",
+    "index.html": "/testAleannlab/index.html",
+    "precache-manifest.135625257bc96a324359aa151517c2b5.js": "/testAleannlab/precache-manifest.135625257bc96a324359aa151517c2b5.js",
+    "service-worker.js": "/testAleannlab/service-worker.js",
+    "static/js/2.044dfd5e.chunk.js.LICENSE.txt": "/testAleannlab/static/js/2.044dfd5e.chunk.js.LICENSE.txt",
+    "static/media/Inter-Bold.woff": "/testAleannlab/static/media/Inter-Bold.22049659.woff",
+    "static/media/Inter-Bold.woff2": "/testAleannlab/static/media/Inter-Bold.e7ae9868.woff2",
+    "static/media/Inter-Italic.woff": "/testAleannlab/static/media/Inter-Italic.5ddabe6d.woff",
+    "static/media/Inter-Italic.woff2": "/testAleannlab/static/media/Inter-Italic.9ae10ed3.woff2",
+    "static/media/Inter-Regular.woff": "/testAleannlab/static/media/Inter-Regular.3ae6a7d3.woff",
+    "static/media/Inter-Regular.woff2": "/testAleannlab/static/media/Inter-Regular.a62973a8.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3e29007d.js",
+    "static/js/2.044dfd5e.chunk.js",
+    "static/js/main.580cfeff.chunk.js"
+  ]
+}
