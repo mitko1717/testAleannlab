@@ -9,66 +9,18 @@ import {
   removeItemFromCart,
   addItem,
   deleteWholeProductFromCart,
-  // setInputValue,
+  setInputValue,
 } from "../state/cart/slice";
 import {
   increaseInventory,
   decreaseInventory,
   addQuantityAfterDelete,
+  changeQuantityAfterInputChanges,
 } from "../state/catalog/slice";
 
-const CartWrapper = styled(Flex)`
-  background-color: #f6f5f5;
-  height: 100%;
-`;
-const ImageWrapper = styled.img`
-  height: 75px;
-  width: 100%;
-`;
-const ProductDetails = styled.div`
-  padding: 0px 16px;
-  text-align: center;
-`;
-const Text = styled.h4`
-  margin: 0;
-`;
-const Button = styled.button`
-  background: #eaf5fe;
-  color: #2b99f2;
-  padding: 2px;
-  margin-left: 0.95rem;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-`;
-const InputField = styled.div`
-  margin: 0 auto;
-  display: flex;
-  width: 10rem;
-  font-size: 0.8rem;
-  justify-content: space-around;
-  align-items: center;
-`;
-const MinusPlus = styled.button`
-  font-size: 1.75rem;
-  background: none;
-  border: none;
-  outline: none;
-  color: #2b99f2;
-  cursor: pointer;
-`;
-// const Input = styled.input`
-//   width: 3rem;
-//   text-align: center;
-//   margin: 0;
-// `;
-
 const CartItem = ({ item }) => {
+  const { initialStateOfProducts } = useSelector((state) => state.catalog);
   const dispatch = useDispatch();
-  // const [value, setValue] = useState(item.quantity);
 
   const increaseInventoreHandler = () => {
     dispatch(increaseInventory({ item }));
@@ -82,9 +34,7 @@ const CartItem = ({ item }) => {
     dispatch(addQuantityAfterDelete({ item: item, quantity: item.quantity }));
   };
 
-  // const enteredValue = (e) => {
-  //   dispatch(setInputValue({value: e.target.value, }))
-  // };
+  const initialItemValue = initialStateOfProducts.find((i) => i.id === item.id);
 
   return (
     <Flex row>
@@ -99,23 +49,43 @@ const CartItem = ({ item }) => {
       <FlexItem grow={1} shrink={1} basis="40%">
         <InputField>
           <MinusPlus
+            style={
+              item.quantity === 0
+                ? { pointerEvents: "none", opacity: "0.5" }
+                : {}
+            }
             onClick={() => {
-              // setValue(item.quantity);
               dispatch(removeItemFromCart(item));
               increaseInventoreHandler();
             }}
           >
             –
           </MinusPlus>
-          <h2 style={{ margin: "0" }}>{item.quantity}</h2>
-          {/* <Input
+
+          <Input
+            className="input"
             type="number"
-            value={value}
+            min="0"
+            max={+initialItemValue.inventory}
+            value={item.inputValue}
+            disabled={item.inventory === 0 ? true : false}
             onChange={(e) => {
-              setValue(e.target.value);
-              dispatch(setInputValue({ value: +value, id: item.id }));
+              dispatch(
+                changeQuantityAfterInputChanges({
+                  value: +e.target.value,
+                  id: item.id,
+                })
+              );
+              dispatch(
+                setInputValue({
+                  value: +e.target.value,
+                  id: item.id,
+                  startedValue: initialItemValue,
+                })
+              );
             }}
-          /> */}
+          />
+
           <MinusPlus
             style={
               item.inventory === 0
@@ -123,7 +93,6 @@ const CartItem = ({ item }) => {
                 : {}
             }
             onClick={() => {
-              // setValue(item.quantity);
               dispatch(addItem({ product: item }));
               decreaseInventoreHandler();
             }}
@@ -141,7 +110,7 @@ const CartItem = ({ item }) => {
           updateQuantity();
         }}
       >
-        DEL
+        X
       </Button>
     </Flex>
   );
@@ -168,3 +137,60 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const CartWrapper = styled(Flex)`
+  background-color: #f6f5f5;
+  height: 100%;
+`;
+const ImageWrapper = styled.img`
+  height: 75px;
+  width: 100%;
+`;
+const ProductDetails = styled.div`
+  padding: 0px 16px;
+  text-align: center;
+`;
+const Text = styled.h4`
+  margin: 0;
+`;
+const Button = styled.button`
+  background: #eaf5fe;
+  color: #2b99f2;
+  padding: 0 5px;
+  margin-left: 0.95rem;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+`;
+const InputField = styled.div`
+  margin: 0 auto;
+  display: flex;
+  width: 10rem;
+  font-size: 0.8rem;
+  justify-content: space-around;
+  align-items: center;
+`;
+const MinusPlus = styled.button`
+  font-size: 1.75rem;
+  background: none;
+  border: none;
+  outline: none;
+  color: #2b99f2;
+  cursor: pointer;
+`;
+const Input = styled.input`
+  width: 3.5rem;
+  text-align: center;
+  margin: 0;
+  outline: none;
+  border: 1px solid #2b99f2;
+  background: #eaf5fe;
+  color: #2b99f2;
+  font-weight: 700;
+  padding-left: 1rem;
+  font-size: 1rem;
+`;

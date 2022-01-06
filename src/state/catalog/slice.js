@@ -9,6 +9,7 @@ export const getProducts = createAsyncThunk("products", async () => {
 const initialState = {
   products: [],
   filteredProducts: [],
+  initialStateOfProducts: [],
 };
 
 export const catalogSlice = createSlice({
@@ -45,6 +46,20 @@ export const catalogSlice = createSlice({
       existingItem.inventory = existingItem.inventory + itemToDecrease.quantity;
     },
 
+    changeQuantityAfterInputChanges(state, action) {
+      const existingItem = state.products.find(
+        (item) => item.id === action.payload.id
+      );
+
+      const initialItem = state.initialStateOfProducts.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (action.payload.value <= initialItem.inventory) {
+        existingItem.inventory = initialItem.inventory - action.payload.value;
+      }
+    },
+
     filterProducts(state, action) {
       state.products = state.filteredProducts.filter((item) =>
         item.name.toLowerCase().includes(action.payload)
@@ -56,6 +71,7 @@ export const catalogSlice = createSlice({
     [getProducts.fulfilled]: (state, action) => {
       state.products = action.payload;
       state.filteredProducts = action.payload;
+      state.initialStateOfProducts = action.payload;
     },
   },
 });
@@ -65,6 +81,7 @@ export const {
   increaseInventory,
   addQuantityAfterDelete,
   filterProducts,
+  changeQuantityAfterInputChanges,
 } = catalogSlice.actions;
 
 export default catalogSlice.reducer;

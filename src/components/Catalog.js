@@ -8,19 +8,6 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { filterProducts, getProducts } from "../state/catalog/slice";
 
-const SearchInput = styled.input`
-  width: 100%;
-  outline: none;
-  padding-left: 1rem;
-  border: 1px solid #2b99f2;
-  background: #eaf5fe;
-  color: #2b99f2;
-  font-weight: 700;
-  ::placeholder {
-    font-weight: 100;
-  }
-`;
-
 const Catalog = () => {
   const inputRef = useRef("");
   const products = useSelector(selectProducts);
@@ -40,7 +27,6 @@ const Catalog = () => {
         type="text"
         name=""
         placeholder="Search for products"
-        // value=""
         onChange={filterProd}
       />
       {products.length > 0 ? (
@@ -65,3 +51,16 @@ const Catalog = () => {
 };
 
 export default Catalog;
+
+const SearchInput = styled.input`
+  width: 100%;
+  outline: none;
+  padding-left: 1rem;
+  border: 1px solid #2b99f2;
+  background: #eaf5fe;
+  color: #2b99f2;
+  font-weight: 700;
+  ::placeholder {
+    font-weight: 100;
+  }
+`;

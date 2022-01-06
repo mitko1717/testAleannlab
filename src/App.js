@@ -10,10 +10,10 @@ const StyledFlex = styled(Flex)``;
 const App = () => {
   return (
     <StyledFlex>
-      <FlexItem basis="60%">
+      <FlexItem basis="70%">
         <Catalog />
       </FlexItem>
-      <FlexItem basis="40%">
+      <FlexItem basis="30%">
         {/* <Logo /> */}
         <Cart />
       </FlexItem>
