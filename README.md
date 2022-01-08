@@ -1,28 +1,3 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=100px src="src/assets/logo.svg" alt="Project logo"></a>
-</p>
-
-# Frontend Challenge
-
-## Get Started
-
-Clone this repo
-
-```
-> cd AleannLab-test-task-aleannlab-react
-> npm install
-> npm start
-```
-
-## Overview
-
-This simple eCommerce site is almost complete! There are a few UX issues to address and features we'd like to add to get us to the finish line. Questions are encouraged, [Ask us](mailto:job@aleannlab.com&subject=Questions%20about%20FE%20code%20challenge) about requirements, expectations, and unclear goals. Someone will get back to you as soon as possible.
-
-The assignment should only take a few of hours, but take as long as you need. We expect you to do this on your own and treat it like a real client project with the same level of care, quality code and good commits. Feel free to edit any of the existing code. After completing the assignment, please also commit your answers to the questions [below](#follow-up-questions).
-
-Have fun, and good luck!
-
 ## Assignment
 
 ### Catalog
@@ -78,19 +53,22 @@ Answer the follow questions inline, and commit it to your submission
 
 **1.** Explain the flow of data from the store to the UI and back as simply as you can.
 
+i guess, we need data store in one place to have opportunity to rule, change and manipulate it in every component and reflect changes everywhere in project, computing some values.
+
 **2.** How else can we improve the experience of the site? What suggestions can you make to the product team and the development team?
+
+maybe make mobile version
 
 **3.** What recommendations can you make to the development team for scalability?
 
+who am i to recommend anything?
+
 **4.** What knowledge up front could have helped this go smoother or faster?
+
+for my the most difficult part was make two stores (catalog and carts) work together dynamicly and change the states there both, depends on input value of every cart.
 
 **5.** How was it working around these libraries? Anything trip you up?
 
-## Submit
-
-When you're done, push your code to a private GitHub repository under your username
-(e.g. github.com/your-username/test-task-react-aleannlab). Give access permissions for the repo to our team
+work with these libraries completely fine to me
 
 job@aleannlab.com
-
-Thanks for taking the time to complete the assignment!
